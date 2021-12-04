@@ -1,4 +1,4 @@
-# MULTIFORCESUB FILE BOT
+# File-Sharing-Man
 
 Bot Telegram untuk menyimpan Posting atau File yang dapat Diakses melalui Link Khusus.
 Saya Kira Ini Akan Bermanfaat Bagi Banyak Orang.. 😇.
@@ -89,7 +89,8 @@ python3 main.py
 
 
 ## Support   
-Bergabunglah di [Group Telegram ](https://www.telegram.dog/SharingUserbot) Untuk Dukungan/Bantuan Dan Join [Channel](https://www.telegram.dog/Lunatic0de) untu info Update bot.   
+<a href="https://t.me/UnrealBabies"><img src="https://img.shields.io/badge/Owner-Bot%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://t.me/ZeldaProjects"><img src="https://img.shields.io/badge/Join-Updates%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
    
 Laporkan Bug, Berikan Permintaan Fitur Di sana.. 
 

@@ -1,13 +1,13 @@
 {
-  "name": "File Sharing Man",
+  "name": "ZLDAFILEBOT",
   "description": "BOT Multi Force Subs File Sharing Bot berguna untuk menyimpan file dan dapat diakses melalui link khusus",
   "keywords": [
     "telegram",
     "file",
     "sharing"
   ],
-  "repository": "https://github.com/mrismanaziz/File-Sharing-Man",
-  "logo": "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg",
+  "repository": "https://github.com/fhmyngrh/zldafilebot",
+  "logo": "https://telegra.ph/file/2df3529c4b93e0516216f.jpg",
   "env": {
     "TG_BOT_TOKEN": {
       "description": "Masukan Bot token, Dapatkan dari t.me/BotFather",
@@ -15,11 +15,11 @@
     },
     "OWNER": {
       "description": "Masukan Username Telegram untuk Owner BOT [ Jangan Pake @ ]",
-      "value": "mrismanaziz"
+      "value": "UnrealZlda"
     },
     "OWNER_ID": {
       "description": "Masukan User ID Telegram untuk Owner BOT",
-      "value": "844432220"
+      "value": "1977120689"
     },
     "ADMINS": {
       "description": "Masukan User ID untuk mendapatkan hak Admin BOT [Hanya dapat membuat link]",
@@ -55,12 +55,12 @@
     },
     "CHANNEL":{
       "description": "Masukan Username Channel anda Untuk Wajib Subscribenya [ Jangan Pake @ ]",
-      "value": "Lunatic0de",
+      "value": "ZeldaProjects",
       "required": false
     },
     "GROUP":{
       "description": "Masukan Username dari Group anda Untuk Wajib Subscribenya [ Jangan Pake @ ]",
-      "value": "SharingUserbot",
+      "value": "UnrealBabies",
       "required": false
     }
   },
