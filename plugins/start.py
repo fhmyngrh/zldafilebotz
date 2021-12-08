@@ -25,7 +25,7 @@ TIME_DURATION_UNITS = (
     ("sec", 1),
 )
 
-OWNER_CH =[-1001531498594,]
+OWNER_CH =[-1001531498594]
 
 
 async def _human_time_duration(seconds):
