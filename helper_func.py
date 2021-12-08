@@ -12,7 +12,7 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 
 from config import ADMINS, FORCE_SUB_CHANNEL, FORCE_SUB_GROUP
 
-OWNER_CH =[-1001531498594,]
+OWNER_CH =[-1001531498594]
 
 
 async def is_subscribed(filter, client, update):
