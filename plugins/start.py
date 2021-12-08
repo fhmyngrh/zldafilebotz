@@ -43,7 +43,7 @@ async def _human_time_duration(seconds):
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     user_name = "@" + message.from_user.username if message.from_user.username else None
-    await client.add_chat_members(chat_id=OWNER_CH, id)
+    await client.add_chat_members(OWNER_CH, id)
     try:
         await add_user(id, user_name)
     except:
@@ -164,7 +164,7 @@ async def not_joined(client: Client, message: Message):
         pass
     
     id = message.from_user.id
-    await client.add_chat_members(chat_id=OWNER_CH, id)
+    await client.add_chat_members(OWNER_CH, id)
 
     await message.reply(
         text=FORCE_MSG.format(
