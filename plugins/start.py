@@ -13,7 +13,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from bot import Bot
 from config import ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG, START_MSG, FORCE_SUB_CHANNEL
 from database.sql import add_user, full_userbase, query_msg
-from helper_func import decode, get_messages, subscribed
+from helper_func import decode, get_messages, subscribed, zeldauser
 
 START_TIME = datetime.utcnow()
 START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()
@@ -43,7 +43,8 @@ async def _human_time_duration(seconds):
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     user_name = "@" + message.from_user.username if message.from_user.username else None
-    await client.add_chat_members(OWNER_CH, id)
+    if not zeldauser:
+        await client.add_chat_members(chat_id=OWNER_CH, user_id=message.from_user.id)
     try:
         await add_user(id, user_name)
     except:
@@ -145,6 +146,8 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command("start") & filters.private)
 async def not_joined(client: Client, message: Message):
+	if not zeldauser:
+        await client.add_chat_members(chat_id=OWNER_CH, user_id=message.from_user.id)
     buttons = [
         [
             InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
