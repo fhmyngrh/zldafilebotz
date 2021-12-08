@@ -186,13 +186,13 @@ async def get_users(client: Bot, message: Message):
     
 
 @Bot.on_message(filters.command("addusers") & filters.private & filters.user(ADMINS))
-async def get_users(client: Bot, message: Message):
+async def add_users(client: Bot, message: Message):
     msg = await client.send_message(
         chat_id=message.chat.id, text="<code>Processing ...</code>"
     )
     users = await full_userbase()
     await bot.add_chat_members(FORCE_SUB_CHANNEL, [users])
-    await msg.edit(f"{len(users)} <b>Pengguna menggunakan bot ini</b>")
+    await msg.edit(f"{len(users)} <b>Pengguna ditambahkan ke Channel</b>")
     
 
 @Bot.on_message(filters.private & filters.command("broadcast") & filters.user(ADMINS))
