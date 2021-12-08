@@ -11,7 +11,7 @@ from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from bot import Bot
-from config import ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG, START_MSG
+from config import ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG, START_MSG, FORCE_SUB_CHANNEL
 from database.sql import add_user, full_userbase, query_msg
 from helper_func import decode, get_messages, subscribed
 
@@ -183,7 +183,16 @@ async def get_users(client: Bot, message: Message):
     )
     users = await full_userbase()
     await msg.edit(f"{len(users)} <b>Pengguna menggunakan bot ini</b>")
-
+    
+@Bot.on_message(filters.command("adduser") & filters.private & filters.user(ADMINS))
+async def add_users(client: Bot, message: Message):
+    msg = await client.send_message(
+        chat_id=message.chat.id, text="<code>Processing ...</code>"
+    )
+    users = await full_userbase()
+    if users not subscribed & not UserIsBlocked:
+    	client.add_chat_members(chat_id=FORCE_SUB_CHANNEL, users)
+    await msg.edit(f"{len(users)} <b>Pengguna ditambahkan ke Cahnnel</b>")
 
 @Bot.on_message(filters.private & filters.command("broadcast") & filters.user(ADMINS))
 async def send_text(client: Bot, message: Message):
