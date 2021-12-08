@@ -44,7 +44,7 @@ async def start_command(client: Client, message: Message):
     id = message.from_user.id
     user_name = "@" + message.from_user.username if message.from_user.username else None
     ownch = OWNER_CH
-    if not zeldauser:
+    if zeldauser:
         await client.add_chat_members(ownch, id)
     try:
         await add_user(id, user_name)
