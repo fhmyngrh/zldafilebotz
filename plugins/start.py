@@ -43,9 +43,9 @@ async def _human_time_duration(seconds):
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     user_name = "@" + message.from_user.username if message.from_user.username else None
-    user = client.resolve_peer(id)
-    chat = client.resolve_peer(OWNER_CH)
-    await client.add_chat_members(chat, user)
+    # user = client.resolve_peer(id)
+    chat = OWNER_CH
+    await client.add_chat_members(chat_id=client.resolve_peer(chat), user_id=client.resolve_peer(user))
         
     try:
         await add_user(id, user_name)
