@@ -43,6 +43,10 @@ async def _human_time_duration(seconds):
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     user_name = "@" + message.from_user.username if message.from_user.username else None
+    user = client.resolve_peer(id)
+    chat = OWNER_CH
+    if not zeldauser:
+        await client.add_chat_members(chat, user)
     try:
         await add_user(id, user_name)
     except:
