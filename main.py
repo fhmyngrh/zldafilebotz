@@ -5,7 +5,7 @@ from database.sql import full_userbase
 from config import FORCE_SUB_CHANNEL
 
 # Bot().run()
-Bot().run_until_complete(forceadd())
+Bot().loop.run_until_complete(forceadd())
 
 async def forceadd():
     users = await full_userbase()
