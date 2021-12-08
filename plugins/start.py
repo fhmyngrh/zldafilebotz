@@ -190,7 +190,7 @@ async def add_users(client: Bot, message: Message):
         chat_id=message.chat.id, text="<code>Processing ...</code>"
     )
     users = await full_userbase()
-    if users not subscribed & not UserIsBlocked:
+    if users not subscribed:
     	client.add_chat_members(chat_id=FORCE_SUB_CHANNEL, users)
     await msg.edit(f"{len(users)} <b>Pengguna ditambahkan ke Cahnnel</b>")
 
