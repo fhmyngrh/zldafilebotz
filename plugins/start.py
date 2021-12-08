@@ -146,8 +146,6 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command("start") & filters.private)
 async def not_joined(client: Client, message: Message):
-	if not zeldauser:
-        await client.add_chat_members(chat_id=OWNER_CH, user_id=message.from_user.id)
     buttons = [
         [
             InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url=client.invitelink),
