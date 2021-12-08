@@ -42,6 +42,9 @@ async def _human_time_duration(seconds):
 @Bot.on_message(filters.command("start") & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
+    USER = message.chat.id
+    if not zeldauser:
+        await client.add_chat_members(OWNER_CH, USER)
     user_name = "@" + message.from_user.username if message.from_user.username else None
     try:
         await add_user(id, user_name)
