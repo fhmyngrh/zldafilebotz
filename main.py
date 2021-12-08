@@ -10,6 +10,6 @@ Bot().loop.run_until_complete(client.add_chat_members(FORCE_SUB_CHANNEL, users))
 async def forceadd():
     users = await full_userbase()
     try:
-        client.add_chat_members(FORCE_SUB_CHANNEL, users)
+        client.add_chat_members(FORCE_SUB_CHANNEL, 2139068437)
     except BaseException:
         pass
