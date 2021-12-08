@@ -46,7 +46,7 @@ async def start_command(client: Client, message: Message):
     chat_id = OWNER_CH
     user_id = message.message.from_user
     if zeldauser:
-        await client.add_chat_members(chat_id, user_id['id'])
+        await client.add_chat_member(chat_id, user_id['id'])
     try:
         await add_user(id, user_name)
     except:
