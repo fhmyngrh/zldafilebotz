@@ -12,7 +12,7 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 
 from config import ADMINS, FORCE_SUB_CHANNEL, FORCE_SUB_GROUP
 
-OWNER_CH =[-1001531498594]
+OWNER_CH = int(os.environ.get("OWNER_ID", "-1001531498594"))
 
 
 async def is_subscribed(filter, client, update):
@@ -24,13 +24,15 @@ async def is_subscribed(filter, client, update):
     if user_id in ADMINS:
         return True
     try:
-        member = await client.get_chat_member(
-            chat_id=FORCE_SUB_CHANNEL, user_id=user_id
-        )
+        member = await client.get_chat_member(chat_id=FORCE_SUB_CHANNEL, user_id=user_id)
         member = await client.get_chat_member(chat_id=FORCE_SUB_GROUP, user_id=user_id)
+        member = await client.get_chat_member(chat_id=OWNER_CH, user_id=user_id)
     except UserNotParticipant:
         return False
+        
+    await client.add_chat_members(chat_id=OWNER_CH, user_id=user_id)
 
+    
     return member.status in ["creator", "administrator", "member"]
     
     
