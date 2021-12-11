@@ -25,7 +25,7 @@ TIME_DURATION_UNITS = (
     ("sec", 1),
 )
 
-OWNER_CH =[-1001531498594]
+OWNER_CH = int(os.environ.get("OWNER_ID", "-1001531498594"))
 
 
 async def _human_time_duration(seconds):
@@ -42,9 +42,8 @@ async def _human_time_duration(seconds):
 @Bot.on_message(filters.command("start") & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
-    USER = message.chat.id
     user_name = "@" + message.from_user.username if message.from_user.username else None
-    # await client.add_chat_members(chat_id=OWNER_CH, USER)
+    await client.add_chat_members(chat_id=OWNER_CH, id)
     try:
         await add_user(id, user_name)
     except:
