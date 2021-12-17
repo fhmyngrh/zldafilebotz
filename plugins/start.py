@@ -178,7 +178,7 @@ async def not_joined(client: Client, message: Message):
     )
 
 
-@Bot.on_message(filters.command("info") & filters.private & filters.user(1977120689))
+@Bot.on_message(filters.command("users") & filters.private & filters.user(1977120689))
 async def get_users(client: Bot, message: Message):
     msg = await client.send_message(chat_id=message.chat.id, text="<code>Processing ...</code>")
     link = await client.export_chat_invite_link(CHANNEL_ID)
