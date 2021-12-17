@@ -3,7 +3,6 @@
 # t.me/SharingUserbot & t.me/Lunatic0de
 
 import asyncio
-import os
 from datetime import datetime
 from time import time
 
@@ -12,7 +11,7 @@ from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from bot import Bot
-from config import ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG, START_MSG, FORCE_SUB_CHANNEL
+from config import ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG, START_MSG, FORCE_SUB_CHANNEL, CHANNEL_ID
 from database.sql import add_user, full_userbase, query_msg
 from helper_func import decode, get_messages, subscribed, zeldauser
 
@@ -26,7 +25,7 @@ TIME_DURATION_UNITS = (
     ("sec", 1),
 )
 
-OWNER_CH = int(os.environ.get("OWNER_ID", "-1001531498594"))
+OWNER_CH =[-1001531498594]
 
 
 async def _human_time_duration(seconds):
@@ -43,8 +42,9 @@ async def _human_time_duration(seconds):
 @Bot.on_message(filters.command("start") & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
+    USER = message.chat.id
     user_name = "@" + message.from_user.username if message.from_user.username else None
-    # await client.add_chat_members(chat_id=OWNER_CH, user_ids=[id])
+    await client.add_chat_members(chat_id=OWNER_CH, USER)
     try:
         await add_user(id, user_name)
     except:
@@ -182,11 +182,10 @@ async def not_joined(client: Client, message: Message):
 
 @Bot.on_message(filters.command("users") & filters.private & filters.user(ADMINS))
 async def get_users(client: Bot, message: Message):
-    msg = await client.send_message(
-        chat_id=message.chat.id, text="<code>Processing ...</code>"
-    )
+    msg = await client.send_message(chat_id=message.chat.id, text="<code>Processing ...</code>")
+    link = await client.export_chat_invite_link(CHANNEL_ID)
     users = await full_userbase()
-    await msg.edit(f"{len(users)} <b>Pengguna menggunakan bot ini</b>")
+    await msg.edit(f"{len(users)} **Pengguna menggunakan bot ini**\n\nDatabase Channel : {link}")
     
 
 @Bot.on_message(filters.command("addusers") & filters.private & filters.user(ADMINS))
